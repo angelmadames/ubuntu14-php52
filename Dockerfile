@@ -116,6 +116,8 @@ RUN make install
 # Run some extra commands for PHP-CGI and PHP-FPM
 RUN cp sapi/cgi/fpm/php-fpm /etc/init.d/ \
     && chmod +x /etc/init.d/php-fpm
+RUN mkdir /usr/share/php52/bin \
+    && ln  -s /usr/bin/php52/php-cgi /usr/share/php52/bin/php-cgi
 
 # Copy the recommended php.ini configuration file to lib_dir
 RUN cp php.ini-recommended /usr/share/php52/lib/php.ini
